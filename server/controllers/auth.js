@@ -1,5 +1,7 @@
-import User from "../models/User.js"
+import User from "../models/User.js";
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
 //SignUp
 export const register = async (req, res) => {
     try {
@@ -49,7 +51,42 @@ export const signin = async (req, res) => {
             })
         }
         
+        const token = jwt.sign(
+            {
+                id: user._id
+            },
+            'SECRET_KEY',
+            { expiresIn: '1000h' },
+        );
+
+        res.json({
+            token, user, message: "Нou are logged in.",
+        })
     } catch (error) {
         res.json({message: "Error during authorization."});
+    }
+}
+
+//GetCurrentUser
+export const getCurrentUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.userId);
+        if (!user){
+            return res.json({
+                message: "There is no such user."
+            })
+        }
+
+        const token = jwt.sign(
+            {
+                id: user._id
+            },
+            'SECRET_KEY',
+            { expiresIn: '1000h' },
+        );
+
+        res.json({ user, token, });
+    } catch (error) {
+        res.json({message: "Error during getting user."});
     }
 }
