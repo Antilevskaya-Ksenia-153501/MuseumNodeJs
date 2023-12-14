@@ -46,7 +46,7 @@ export const SignInPage = () => {
         <div>
           <button type="submit" onClick={handleSubmit}>Sign in</button>
           <Link to={'/register'}>No account</Link>
-          </div>
+        </div>
     </form>
   )
 }

@@ -3,12 +3,16 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoute from './routes/auth.js';
 import exhibitsRoute from './routes/exhibits.js';
+import fileUpload from 'express-fileupload';
 
 const app = express();
 app.use(cors());
+app.use(fileUpload());
 app.use(express.json());
+app.use(express.static('uploads'));
+
 app.use('/api/auth', authRoute);
-app.use('api/exhibits', exhibitsRoute);
+app.use('/api/exhibits', exhibitsRoute);
 
 async function start() {
     try {
