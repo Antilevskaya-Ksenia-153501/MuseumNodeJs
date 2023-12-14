@@ -1,7 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const RegisterPage = () => {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:3002/api/auth/register', { fullName, email, password });
+      console.log(response.data);
+      setFullName('');
+      setEmail('');
+      setPassword('');
+      navigate('/signin');
+    } catch (error) {
+      return console.log(error);
+    }
+  };
+
   return (
-    <div>RegisterPage</div>
+    <form onSubmit={e => e.preventDefault()}>
+    <h1>Registration</h1>
+      <label>
+          Fullname:
+          <input type="text" placeholder="Enter fullname"
+          value={fullName} onChange={e => setFullName(e.target.value)}/>
+      </label>
+      <br />
+     <label>
+        Email:
+        <input type="text" placeholder="Enter email"
+        value={email} onChange={e => setEmail(e.target.value)}/>
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" placeholder="Enter password"
+        value={password} onChange={e => setPassword(e.target.value)}/>
+      </label>
+      <br />
+      <div>
+        <button type="submit" onClick={handleSubmit}>Sign up</button>
+        <Link to={'/signin'}>Already registered</Link>
+      </div>
+  </form>
   )
 }

@@ -10,7 +10,7 @@ import {SignInPage} from './pages/SignInPage';
 
 function App() {
   return (
-    // <Layout>
+    <Layout>
       <Routes>
         <Route path='/' element={ <MainPage/> }/>
         <Route path='/exhibits' element={ <ExhibitsPage/> }/>
@@ -20,7 +20,7 @@ function App() {
         <Route path='/register' element={ <RegisterPage/> }/>
         <Route path='/signin' element={ <SignInPage/> }/>
       </Routes>
-    // </Layout>
+    </Layout>
   );
 }
 
