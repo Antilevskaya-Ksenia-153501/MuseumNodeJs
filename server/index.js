@@ -2,11 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoute from './routes/auth.js';
+import exhibitsRoute from './routes/exhibits.js';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoute);
+app.use('api/exhibits', exhibitsRoute);
 
 async function start() {
     try {
