@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const REgisterPage = () => {
+export const RegisterPage = () => {
   return (
-    <div>REgisterPage</div>
+    <div>RegisterPage</div>
   )
 }
