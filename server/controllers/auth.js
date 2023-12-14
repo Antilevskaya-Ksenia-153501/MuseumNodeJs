@@ -35,11 +35,11 @@ export const register = async (req, res) => {
 //SignIn
 export const signin = async (req, res) => {
     try {
-        const {fullName, email, password} = req.body;
+        const {email, password} = req.body;
         const user = await User.findOne({ email });
 
         if (!user){
-            return res.json({
+            return res.status(404).json({
                 message: "There is no such user."
             })
         }
@@ -47,7 +47,7 @@ export const signin = async (req, res) => {
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
         if (!isPasswordCorrect){
-            return res.json({
+            return res.status(404).json({
                 message: "Incorrect password."
             })
         }
@@ -61,10 +61,10 @@ export const signin = async (req, res) => {
         );
 
         res.json({
-            token, user, message: "Нou are logged in.",
+            token, user, message: "You are logged in.",
         })
     } catch (error) {
-        res.json({message: "Error during authorization."});
+        res.status(404).json({message: "Error during authorization."});
     }
 }
 

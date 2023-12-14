@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const RegisterPage = () => {
   const [fullName, setFullName] = useState('');
@@ -18,6 +19,8 @@ export const RegisterPage = () => {
       setPassword('');
       navigate('/signin');
     } catch (error) {
+      toast.error(error.response.data.message);
+      navigate('/register');
       return console.log(error);
     }
   };

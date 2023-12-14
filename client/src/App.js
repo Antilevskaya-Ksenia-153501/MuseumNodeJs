@@ -7,6 +7,8 @@ import {AddExhibitPage} from './pages/AddExhibitPage';
 import {EditExhibitPage} from './pages/EditExhibitPage';
 import {RegisterPage} from './pages/RegisterPage';
 import {SignInPage} from './pages/SignInPage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path='/register' element={ <RegisterPage/> }/>
         <Route path='/signin' element={ <SignInPage/> }/>
       </Routes>
+
+      <ToastContainer position='bottom-right'></ToastContainer>
     </Layout>
   );
 }
