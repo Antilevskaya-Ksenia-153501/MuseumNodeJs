@@ -1,12 +1,18 @@
 import {Router} from 'express';
-import {createExhibit, getAll} from '../controllers/exhibits.js'
+import {createExhibit, getAll, getById, removeExhibit} from '../controllers/exhibits.js'
 
 const router = new Router();
 
-//Create exhibit
+//Create Exhibit
 router.post('/create', createExhibit);
 
-//Get list of exhibits
+//Get All Exhibits
 router.get('/getExhibits', getAll);
+
+//Get Exhibit By Id 
+router.get('/:id', getById);
+
+//Remove Exhibit
+router.delete('/delete/:id', removeExhibit);
 
 export default router;

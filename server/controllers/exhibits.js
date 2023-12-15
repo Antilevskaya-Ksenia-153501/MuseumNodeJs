@@ -47,3 +47,30 @@ export const getAll = async (req, res) => {
         console.log(error);
     }
 }
+
+//Get Exhibit By Id
+export const getById = async (req, res) => {
+    try {
+        const exhibit = await Exhibit.findById(req.params.id);
+        if (!exhibit){
+            return res.json({message: "There is no such exhibit."});
+        }
+        res.json({exhibit});
+    } catch (error) {
+        res.json({message: "Error during getting exhibit."});
+        console.log(error);
+    }
+}
+
+//Remove Exhibit
+export const removeExhibit = async (req, res) => {
+    try {
+        const exhibit = await Exhibit.findByIdAndDelete(req.params.id);
+        if (!exhibit){
+            return res.json({message: "There is no such exhibit."});
+        }
+    } catch (error) {
+        res.json({message: "Error during removing exhibit."});
+        console.log(error);
+    }
+}
