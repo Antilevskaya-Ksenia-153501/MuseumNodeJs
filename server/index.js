@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoute from './routes/auth.js';
 import exhibitsRoute from './routes/exhibits.js';
+import hallsRoute from './routes/halls.js';
 import fileUpload from 'express-fileupload';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.static('uploads'));
 
 app.use('/api/auth', authRoute);
 app.use('/api/exhibits', exhibitsRoute);
+app.use('/api/halls', hallsRoute);
 
 async function start() {
     try {

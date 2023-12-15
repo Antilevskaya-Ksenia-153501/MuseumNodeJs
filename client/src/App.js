@@ -7,7 +7,9 @@ import {AddExhibitPage} from './pages/AddExhibitPage';
 import {EditExhibitPage} from './pages/EditExhibitPage';
 import {RegisterPage} from './pages/RegisterPage';
 import {SignInPage} from './pages/SignInPage';
-import { ToastContainer, toast } from 'react-toastify';
+import {HallsPage} from './pages/HallsPage';
+import {CreateHallPage} from './pages/CreateHallPage';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path='/edit-exhibit/:id' element={ <EditExhibitPage/> }/>
         <Route path='/register' element={ <RegisterPage/> }/>
         <Route path='/signin' element={ <SignInPage/> }/>
+        <Route path='/halls' element={ <HallsPage/> }/>
+        <Route path='/create-hall' element={ <CreateHallPage/> }/>
       </Routes>
 
       <ToastContainer position='bottom-right'></ToastContainer>
