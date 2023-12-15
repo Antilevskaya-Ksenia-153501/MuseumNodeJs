@@ -34,6 +34,13 @@ export const AddExhibitPage = () => {
       }
     };
 
+    const handleCancel = () => {
+      setTitle('');
+      setDescription('');
+      setDate('');
+      setImage('');
+    };
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
         <h1>Create exhibit</h1>
@@ -68,6 +75,7 @@ export const AddExhibitPage = () => {
         </div>
         <div>
           <button type="submit" onClick={handleSubmit}>Add</button>
+           <button type="submit" onClick={handleCancel}>Cancel</button>
         </div>  
     </form>
   )

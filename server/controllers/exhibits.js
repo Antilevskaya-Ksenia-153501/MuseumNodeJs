@@ -2,7 +2,7 @@ import Exhibit from '../models/Exhibit.js';
 import path, {dirname} from 'path';
 import { fileURLToPath } from 'url';
 
-//Create exhibit
+//Create Exhibit
 export const createExhibit = async (req, res) => {
     try {
         const {title, description, date} = req.body;
@@ -30,6 +30,20 @@ export const createExhibit = async (req, res) => {
 
     } catch (error) {
         res.json({message: "Error during creation exhibit."});
+        console.log(error);
+    }
+}
+
+//Get All Exhibits
+export const getAll = async (req, res) => {
+    try {
+        const exhibits = await Exhibit.find();
+        if (!exhibits){
+            return res.json({message: "There is no exhibits."});
+        }
+        res.json({exhibits});
+    } catch (error) {
+        res.json({message: "Error during getting list of exhibits."});
         console.log(error);
     }
 }
