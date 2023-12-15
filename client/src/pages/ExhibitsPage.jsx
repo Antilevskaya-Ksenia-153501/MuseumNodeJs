@@ -45,6 +45,7 @@ export const ExhibitsPage = () => {
             <p>{exhibit.title}</p>
             <p>{exhibit.description}</p>
             <Link to={`/exhibit-details/${exhibit._id}`}>Details</Link>
+            <Link to={`/edit-exhibit/${exhibit._id}`}>Update</Link>
             <button onClick={() => handleDeleteExhibit(exhibit._id)}>Delete</button>
           </li>
         ))}

@@ -55,7 +55,7 @@ export const getById = async (req, res) => {
         if (!exhibit){
             return res.json({message: "There is no such exhibit."});
         }
-        res.json({exhibit});
+        res.json(exhibit);
     } catch (error) {
         res.json({message: "Error during getting exhibit."});
         console.log(error);
@@ -71,6 +71,32 @@ export const removeExhibit = async (req, res) => {
         }
     } catch (error) {
         res.json({message: "Error during removing exhibit."});
+        console.log(error);
+    }
+}
+
+//Update Exhibit
+export const updateExhibit = async (req, res) => {
+    try {
+        const {title, description, date, id} = req.body;
+        const exhibit = await Exhibit.findById(id);
+        
+        if (req.files){
+            let fileName = Date.now().toString() + req.files.image.name;
+            const __dirname = dirname(fileURLToPath(import.meta.url));
+            req.files.image.mv(path.join(__dirname, '..', 'uploads', fileName));
+
+            exhibit.imgUrl = fileName || '';
+        }
+        exhibit.title = title;
+        exhibit.description = description;
+        exhibit.date = date;
+
+        await exhibit.save();
+        res.json(exhibit);
+    }
+    catch (error) {
+        res.json({message: "Error during updating exhibit."});
         console.log(error);
     }
 }

@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {createExhibit, getAll, getById, removeExhibit} from '../controllers/exhibits.js'
+import {createExhibit, getAll, getById, removeExhibit, updateExhibit} from '../controllers/exhibits.js';
 
 const router = new Router();
 
@@ -14,5 +14,8 @@ router.get('/:id', getById);
 
 //Remove Exhibit
 router.delete('/delete/:id', removeExhibit);
+
+//Update Exhibit
+router.put('/update/:id', updateExhibit);
 
 export default router;
