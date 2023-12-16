@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/auth.css';
 
 export const Authorization = ({ isAuthenticated, onLogout }) => {
   const handleLogout = () => {
@@ -12,22 +13,24 @@ export const Authorization = ({ isAuthenticated, onLogout }) => {
       <ul>
         {!isAuthenticated ? (
           <>
-            <li>
-              <Link to="/signin">
-                <button>Sign in</button>
-              </Link>
-            </li>
+            <div className='registration'>
+              <li>
+                <Link to="/signin">
+                  <button className="btn space">Sign in</button>
+                </Link>
+              </li>
 
-            <li>
-              <Link to="/register">
-                <button>Sign up</button>
-              </Link>
-            </li>
+              <li>
+                <Link to="/register">
+                  <button className="btn space">Sign up</button>
+                </Link>
+              </li>
+            </div>
 
           </>
         ) : (
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button className="btn space" onClick={handleLogout}>Logout</button>
           </li>
         )}
       </ul>

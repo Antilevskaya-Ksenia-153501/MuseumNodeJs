@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia&family=PT+Serif&display=swap');
+.time {
+    font-size: 18px;
+    font-family: 'PT Serif', serif;
+    margin: 5px;
+}
+
+.time span {
+    font-weight: bold;
+}

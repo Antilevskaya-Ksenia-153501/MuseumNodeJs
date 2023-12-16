@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import '../styles/btn.css';
 
 export const CreateVacancyPage = () => {
   const [title, setTitle] = useState('');
@@ -59,8 +60,8 @@ export const CreateVacancyPage = () => {
         </label>
         <br />
         <div>
-          <button type="submit" onClick={handleSubmit}>Add</button>
-           <button type="submit" onClick={handleCancel}>Cancel</button>
+          <button className="btn space" type="submit" onClick={handleSubmit}>Add</button>
+          <button className="btn space" type="submit" onClick={handleCancel}>Cancel</button>
         </div>  
     </form>
   )

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import '../styles/btn.css';
+import '../styles/vacancies.css';
 
 export const VacanciesPage = () => {
   const [vacancies, setVacancies] = useState([]);
@@ -26,18 +28,18 @@ export const VacanciesPage = () => {
   }
 
   return (
-    <div>
+    <div vacancies-container>
       <h2>Vacancies List</h2>
       <ul>
         {vacancies.map((vacancy) => (
           <li>
-            <p>{vacancy.title}</p>
+            <p className="title">{vacancy.title}</p>
             <p>{vacancy.description}</p>
-            <p>{vacancy.salary}</p>
+            <p><b>Salary:</b>{vacancy.salary}$</p>
           </li>
         ))}
       </ul>
-      <Link to={'/create-vacancy'}>Create</Link>
+      <Link className="btn space" to={'/create-vacancy'}>Create</Link>
     </div> 
   );
 }

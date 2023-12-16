@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/api.css';
 
 export const QuoteAPI = () => {
   const [quote, setQuote] = useState({ content: '', author: '' });
@@ -25,8 +26,7 @@ export const QuoteAPI = () => {
   return (
     <div>
       <div>
-        <p>{quote.content}</p>
-        <p>- {quote.author}</p>
+        <p class="quote">Here is random quote: <strong>{quote.content} <br/>-{quote.author}</strong></p>
       </div>
     </div>
   );

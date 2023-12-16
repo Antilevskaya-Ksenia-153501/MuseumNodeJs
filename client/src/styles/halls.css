@@ -1,0 +1,49 @@
+.halls-container {
+    text-align: center;
+  }
+  
+  .halls-container h2 {
+    font-size: 24px;
+    margin-top: 90px;
+    margin-bottom: 20px;
+    font-family: 'Kalnia', serif;
+    font-weight: 600;
+  }
+
+  .halls-container .title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: 'Kalnia', serif;
+    font-weight: 600;
+  }
+  
+  .halls-container ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  .halls-container li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .halls-container li img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .halls-container li p {
+    margin-bottom: 10px;
+    font-family: 'PT Serif', serif;
+  }

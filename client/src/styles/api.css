@@ -1,0 +1,15 @@
+.quote {
+    font-variant: small-caps;
+    font-kerning: auto;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #333;
+    background-color: #a7f394;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.quote strong {
+    color: #01996D;
+}

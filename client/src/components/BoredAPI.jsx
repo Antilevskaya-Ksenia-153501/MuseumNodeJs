@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/api.css';
 
 export const BoredAPI = () => {
   const [activity, setActivity] = useState({ content: ''});
@@ -25,7 +26,7 @@ export const BoredAPI = () => {
   return (
     <div>
       <div>
-        <p><b>Activity:</b>{activity.content}</p>
+      <p class="quote">Here is random activity: <strong>{activity.content}</strong></p>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/date_time.css';
 
 class DateTime extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class DateTime extends Component {
     });
 
     return (
-      <div>
+      <div className="time">
         <p>Local date: <span>{currentDate}</span></p>
         <p>User's timezone: <span>{userTimeZone}</span></p>
         <p>Local time: <span>{localTime}</span></p>

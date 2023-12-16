@@ -1,0 +1,93 @@
+.btn, a.btn {
+    display: inline-block;
+    color: #fff;
+    background-color: #01996D;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 31px;
+    padding: 13px 20px;
+    transition: color 0.2s ease;
+}
+
+.btn:hover, a.btn:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+.space {
+    margin: 8px;
+}
+
+.exhibits-container {
+    margin-top: 60px;
+}
+
+.welcome {
+    font-family: 'PT Serif', serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+.welcome b {
+    font-weight: bold;
+    color: #007bff;
+}
+
+h2 {
+    font-family: 'Kalnia', serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+  
+ul li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+  
+ul li img {
+    width: 900px;
+    height: 300px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+  
+  ul li .title-date {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+ul li .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+  
+ul li .date {
+    font-size: 14px;
+    color: gray;
+    margin-left: 10px;
+}
+  
+ul li .links-container {
+    display: flex;
+    margin-left: 10px;
+}
+  
+ul li .link {
+    font-size: 18px;
+    color: green;
+    text-decoration: none;
+    margin-right: 10px;
+}
+  
+ul li .link:hover {
+    text-decoration: underline;
+}

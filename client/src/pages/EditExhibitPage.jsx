@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import '../styles/exhibits_edit.css';
 
 export const EditExhibitPage = () => {
   const [title, setTitle] = useState('');
@@ -25,7 +26,12 @@ export const EditExhibitPage = () => {
       const updateData = new FormData();
       updateData.append('title', title);
       updateData.append('description', description);
-      updateData.append('date', date);
+      if (date === null) {
+        updateData.append('date', Date.now());
+      }
+      else {
+        updateData.append('date', date);
+      }
       updateData.append('id', id);
       updateData.append('image', newImage);
 
@@ -95,9 +101,9 @@ export const EditExhibitPage = () => {
               <img src={URL.createObjectURL(newImage)} />
             )}
         </div>
-        <div>
-          <button type="submit" onClick={handleSubmit}>Update</button>
-          <button type="submit" onClick={handleCancel}>Cancel</button>
+        <div className = "btnsedit">
+          <button type="submit" className="btn space" onClick={handleSubmit}>Update</button>
+          <button type="submit" className="btn space" onClick={handleCancel}>Cancel</button>
         </div>  
     </form>
   )
