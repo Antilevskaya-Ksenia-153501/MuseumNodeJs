@@ -18,7 +18,7 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path='/' element={ <MainPage/> }/>
+        <Route path='/' element={ <ExhibitsPage/> }/>
         <Route path='/exhibits' element={ <ExhibitsPage/> }/>
         <Route path='/exhibit-details/:id' element={ <ExhibitPage/> }/>
         <Route path='/new-exhibit' element={ <AddExhibitPage/> }/>

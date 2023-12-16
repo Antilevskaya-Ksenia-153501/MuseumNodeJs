@@ -1,51 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { useNavigate, Link } from 'react-router-dom';
-// import axios from 'axios';
-// import { toast } from 'react-toastify';
-// import '../styles/btn.css';
-// import '../styles/halls.css';
-
-// export const HallsPage = () => {
-//   const [halls, setHalls] = useState([]);
-//   const [loggedInUser, setLoggedInUser] = useState(null);
-//   const navigate = useNavigate();
-
-//   const fetchHalls = async () => {
-//     try {
-//       const response = await axios.get('http://localhost:3002/api/halls/getHalls');
-//       setHalls(response.data.halls);
-//     } catch (error) {
-//       console.log(error);
-//       toast.error(error.response.data.message);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchHalls();
-//   });
-
-//   if (!halls.length) {
-//     <div>Halls do not exist.</div>
-//   }
-
-//   return (
-//     <div className="halls-container">
-//       <h2>Halls List</h2>
-//       <ul>
-//         {halls.map((hall) => (
-//           <li>
-//             <img src={`http://localhost:3002/${hall.imgUrl}`}/>
-//             <p className="title">{hall.title}</p>
-//             <p>{hall.description}</p>
-//             <p><b>Area:</b>{hall.area}</p>
-//           </li>
-//         ))}
-//       </ul>
-//       <Link className="btn space" to={'/create-hall'}>Create</Link>
-//     </div> 
-//   );
-// }
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -77,9 +29,14 @@ export const HallsPage = () => {
 
   const handleSearch = () => {
     const filtered = halls.filter((hall) =>
-      String(hall.area).toLowerCase().includes(searchArea.toLowerCase())
+      String(hall.area).toLowerCase() == (searchArea.toLowerCase())
     );
-    setFilteredHalls(filtered);
+    if (filtered.length === 0) {
+      window.alert('No halls found with the given area.');
+    }
+    else{
+      setFilteredHalls(filtered);
+    }
   };
 
   const handleBack = () => {

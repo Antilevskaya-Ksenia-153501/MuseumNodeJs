@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import '../styles/btn.css';
 
 export const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ export const SignInPage = () => {
       toast.success(response.data.message);
       setEmail('');
       setPassword('');
-      navigate('/');
+      navigate('/exhibits');
       } catch (error) {
         toast.error(error.response.data.message);
         navigate('/signin');
@@ -44,8 +45,8 @@ export const SignInPage = () => {
         </label>
         <br />
         <div>
-          <button type="submit" onClick={handleSubmit}>Sign in</button>
-          <Link to={'/register'}>No account</Link>
+          <button className="btn space" type="submit" onClick={handleSubmit}>Sign in</button>
+          <Link className="btn space" to={'/register'}>No account</Link>
         </div>
     </form>
   )

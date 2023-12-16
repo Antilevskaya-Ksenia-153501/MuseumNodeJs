@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import '../styles/btn.css';
 
 export const RegisterPage = () => {
   const [fullName, setFullName] = useState('');
@@ -47,8 +48,8 @@ export const RegisterPage = () => {
       </label>
       <br />
       <div>
-        <button type="submit" onClick={handleSubmit}>Sign up</button>
-        <Link to={'/signin'}>Already registered</Link>
+        <button className="btn space" type="submit" onClick={handleSubmit}>Sign up</button>
+        <Link className="btn space" to={'/signin'}>Already registered</Link>
       </div>
   </form>
   )
