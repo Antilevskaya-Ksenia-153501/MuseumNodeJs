@@ -26,7 +26,7 @@ export const AddExhibitPage = () => {
       setDescription('');
       setDate('');
       setImage('');
-      navigate('/');
+      navigate('/exhibits');
       } catch (error) {
         toast.error(error.response.data.message);
         navigate('/new-exhibit');

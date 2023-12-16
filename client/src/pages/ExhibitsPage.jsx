@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import DateTime from '../components/DateTime';  
+import { Authorization } from '../components/Authorization';
+import { QuoteAPI } from '../components/QuoteAPI';
+import { BoredAPI } from '../components/BoredAPI';
 
 export const ExhibitsPage = () => {
   const [exhibits, setExhibits] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState('');
   const navigate = useNavigate();
 
   const fetchExhibits = async () => {
@@ -19,25 +23,52 @@ export const ExhibitsPage = () => {
   };
 
   useEffect(() => {
-    fetchExhibits();
-  });
+    const token = localStorage.getItem('token');
+    console.log(localStorage.getItem('token'));
+    if (token) {
+      axios.get('http://localhost:3002/api/auth/current', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(response => {
+        setLoggedInUser(response.data.user);
+      })
+      .catch(error => {
+        console.error('Token verification error:', error.message, token);
+      });
+    }
+      fetchExhibits();
+  }, [loggedInUser]);
 
   const handleDeleteExhibit = async (id) => {
     try {
       await axios.delete(`http://localhost:3002/api/exhibits/delete/${id}`);
-      fetchExhibits();
+      // fetchExhibits();
     } catch (error) {
       console.error('Error deleting exhibit:', error.message);
     }
   };
 
-  if (!exhibits.length) {
-    <div>Exhibits do not exist.</div>
-  }
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setLoggedInUser('');
+    window.location.reload();
+  };
+
+  // if (!exhibits.length) {
+  //   return <div>Exhibits do not exist.</div>;
+  // }
 
   return (
     <div>
       <h2>Exhibit List</h2>
+      {loggedInUser && <p>Welcome, {loggedInUser.fullName}!</p>}
+      <Authorization isAuthenticated={!!loggedInUser} onLogout={handleLogout} />
+      <DateTime />
+      {loggedInUser&&<QuoteAPI/>}
+      {loggedInUser&&<BoredAPI/>}
+      {loggedInUser&&<NavLink to={'/new-exhibit'} href='/'>Add exhibit</NavLink>}
       <ul>
         {exhibits.map((exhibit) => (
           <li key={exhibit._id}>
@@ -45,8 +76,8 @@ export const ExhibitsPage = () => {
             <p>{exhibit.title}</p>
             <p>{exhibit.description}</p>
             <Link to={`/exhibit-details/${exhibit._id}`}>Details</Link>
-            <Link to={`/edit-exhibit/${exhibit._id}`}>Update</Link>
-            <button onClick={() => handleDeleteExhibit(exhibit._id)}>Delete</button>
+            {loggedInUser&&<Link to={`/edit-exhibit/${exhibit._id}`}>Update</Link>}
+            {loggedInUser&&<button onClick={() => handleDeleteExhibit(exhibit._id)}>Delete</button>}
           </li>
         ))}
       </ul>

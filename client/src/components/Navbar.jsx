@@ -9,15 +9,14 @@ export const Navbar = () => {
             <li><NavLink to={'/'} href='/'>About-us</NavLink></li>
             <li><NavLink to={'/'} href='/'>Home</NavLink></li>
             <li><NavLink to={'/exhibits'} href='/'>Exhibits</NavLink></li>
-            <li><NavLink to={'/new-exhibit'} href='/'>Add exhibit</NavLink></li>
             <li><NavLink to={'/halls'} href='/'>Halls</NavLink></li>
         </ul>
       </nav>
 
-      <div>
+      {/* <div>
         <Link to={'/register'}>Sign up</Link>
         <Link to={'/signin'}>Sign in</Link>
-      </div>
+      </div> */}
   </div>
   )
 }
