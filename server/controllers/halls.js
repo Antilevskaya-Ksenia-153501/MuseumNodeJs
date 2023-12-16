@@ -34,7 +34,7 @@ export const createHall = async (req, res) => {
     }
 }
 
-//Get All Exhibits
+//Get All Halls
 export const getAll = async (req, res) => {
     try {
         const halls = await Hall.find();
